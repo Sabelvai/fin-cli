@@ -1,5 +1,5 @@
 from api import dbapi, currency_check
-from commands import incomes, expenses, sumary, currency_add, add_goal
+from commands import incomes, expenses, sumary, currency_add, add_goal, read_goals
 import typer
 from rich.console import Console
 
@@ -74,6 +74,12 @@ def addgoal(goal: str, how_much_to_add: int):
     """
     add_goal.add_goal(goal, how_much_to_add)
 
+@app.command()
+def readgoals():
+    """
+    read goals
+    """
+    read_goals.read_goals()
 
 if __name__ == "__main__":
     app()
