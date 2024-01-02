@@ -36,14 +36,8 @@ goto src
 ```bash
   cd src
 ```
-First run ot create database
-
-```bash
-  python firstrun.py
-```
 
 Use programm
 ```bash
   python main.py --help
 ```
-
