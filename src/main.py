@@ -54,7 +54,6 @@ def curcheck(source_currency: str, destination_currency: str):
             if len(sublist) == 2:
                 list_value1, list_value2 = sublist
                 currency_check.check(source_currency,destination_currency,list_value2,list_value1)
-                print("------------")
 
 @app.command()
 def blackday(how_much: int):
