@@ -1,8 +1,9 @@
 from api import dbapi, currency_check
 from commands import incomes, expenses, sumary, currency_add, add_goal, read_goals
-import os
 import typer
 from rich.console import Console
+import sqlite3
+import firstrun
 
 app = typer.Typer()
 console = Console()
@@ -82,6 +83,17 @@ def readgoals():
     """
     read_goals.read_goals()
 
+def check_for_first_run():
+    db_path = "data/finance.db"
+
+    con = sqlite3.connect(db_path)
+    cur = con.cursor()
+
+    try:
+        cur.execute("SELECT * FROM incomes LIMIT 1")
+    except sqlite3.OperationalError:
+        firstrun.firstrun()
 
 if __name__ == "__main__":
+    check_for_first_run()
     app()
