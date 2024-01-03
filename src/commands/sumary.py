@@ -31,9 +31,9 @@ def summary():
 
     table = Table()
 
-    table.add_column("Incomes")
-    table.add_column("Expenses")
-    table.add_column("Profit")
+    table.add_column("Incomes", style="green",justify = "left")
+    table.add_column("Expenses", style="red", justify="center")
+    table.add_column("Profit", style="bold",justify="right")
 
     income_sorted = sorted(income_print, key=lambda x: x[0], reverse=True)
     expenses_sorted = sorted(expenses_print, key=lambda x: x[0], reverse=True)
