@@ -21,4 +21,4 @@ def incomes(from_source2, how_much):
 
     console = Console()
     console.print(f"Receiving from a [bold white]{from_source2}[/bold white] with an amount of {how_much}")
-    console.print(f"Automatically postponed to a [bold black]black day[/bold black] 15% ({round(blackday_procent)})")
+    console.print(f"Automatically postponed to a [bold grey27]black day[/bold grey27] 15% ({round(blackday_procent)})")
