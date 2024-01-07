@@ -9,9 +9,9 @@ app = typer.Typer()
 console = Console()
 
 @app.command()
-def income(from_source: str, how_much: int):
+def income(from_source: str, how_much: int, blackday_percent: int):
     '''insert your income'''
-    incomes.incomes(from_source, how_much)
+    incomes.incomes(from_source, how_much, blackday_percent)
 
 @app.command()
 def expense(how_much: int, category: str):
