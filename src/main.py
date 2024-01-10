@@ -1,5 +1,5 @@
 from api import dbapi, currency_check
-from commands import incomes, expenses, sumary, currency_add, add_goal, read_goals
+from commands import incomes, expenses, sumary, currency_add, add_goal, read_goals, remove_goal
 import typer
 from rich.console import Console
 import sqlite3
@@ -81,6 +81,10 @@ def readgoals():
     read goals
     """
     read_goals.read_goals()
+
+@app.command()
+def delgoals(goal: str):
+    remove_goal.remove_goals(goal)
 
 def check_for_first_run():
     db_path = "data/finance.db"
