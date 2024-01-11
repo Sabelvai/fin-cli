@@ -71,7 +71,19 @@ def currencies_increase(what_curerency):
     return rows
 
 def blackday(how_much):
-    cur.execute(f"INSERT INTO blackday VALUES ({how_much})")
+    cur.execute(f"SELECT how_much FROM blackday")
+
+    result = cur.fetchone()
+
+    if result:
+        cur.execute(f"UPDATE blackday SET how_much = how_much + ?", (how_much,))
+        con.commit()
+    else:
+        cur.execute(f"INSERT INTO blackday VALUES ({how_much})")
+        con.commit()
+
+def take_blackday(how_much):
+    cur.execute(f"UPDATE blackday SET how_much = how_much - ?", (how_much,))
     con.commit()
 
 def create_goal(goal, how_much_need):

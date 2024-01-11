@@ -86,6 +86,12 @@ def readgoals():
 def delgoals(goal: str):
     remove_goal.remove_goals(goal)
 
+@app.command()
+def takeblackday(how_much: int):
+    dbapi.take_blackday(how_much)
+    incomes.incomes("blackday", how_much, 0)
+
+
 def check_for_first_run():
     db_path = "data/finance.db"
 
