@@ -4,24 +4,28 @@ import typer
 from rich.console import Console
 import sqlite3
 import firstrun
+from typing import Optional
 
 app = typer.Typer()
 console = Console()
 
 @app.command()
-def income(from_source: str, how_much: int, blackday_percent: int):
+def income(from_source: str, how_much: int, blackday_percent: int, date: Optional[str] = None):
     '''insert your income'''
-    incomes.incomes(from_source, how_much, blackday_percent)
+    if date:
+        incomes.incomes(from_source, how_much, blackday_percent, date)
+    else:
+        incomes.incomes(from_source, how_much, blackday_percent)
 
 @app.command()
-def expense(how_much: int, category: str):
+def expense(how_much: int, category: str, date: Optional[str] = None):
     '''insert your expense'''
-    expenses.expense(how_much, category)
+    expenses.expense(how_much, category, date)
 
 @app.command()
-def summary():
+def summary(date: Optional[str] = None):
     '''summary of incomes/expenses'''
-    sumary.summary()
+    sumary.summary(date)
 
 @app.command()
 def read(table: str, column: str):
@@ -84,10 +88,16 @@ def readgoals():
 
 @app.command()
 def delgoals(goal: str):
+    """
+    delete goal
+    """
     remove_goal.remove_goals(goal)
 
 @app.command()
 def takeblackday(how_much: int):
+    """
+    take money from blackday
+    """
     dbapi.take_blackday(how_much)
     incomes.incomes("blackday", how_much, 0)
 

@@ -5,11 +5,11 @@ from rich.console import Console
 from rich.style import Style
 
 
-def incomes(from_source2, how_much, blackday_percent):
+def incomes(from_source2, how_much, blackday_percent, date=None):
 
     current_date = datetime.now()
     processed_date = datetime(current_date.year, current_date.month, current_date.day)
-    formated_date_str = processed_date.strftime("%m.%Y")
+    formated_date_str = date or processed_date.strftime("%m.%Y")
 
 
     blackday_procent = (blackday_percent / 100) * how_much

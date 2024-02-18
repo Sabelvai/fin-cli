@@ -3,10 +3,10 @@ from datetime import datetime
 from rich.console import Console
 from rich.table import Table
 
-def summary():
+def summary(date=None):
     current_date = datetime.now()
     processed_date = datetime(current_date.year, current_date.month, current_date.day)
-    formated_date_str = processed_date.strftime("%m.%Y")
+    formated_date_str = date or processed_date.strftime("%m.%Y")
 
     income_print = dbapi.summary_read("how_much", "from_source", "incomes", formated_date_str)
     expenses_print = dbapi.summary_read("how_much", "category", "expenses", formated_date_str)

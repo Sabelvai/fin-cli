@@ -2,12 +2,12 @@ from api import dbapi
 from datetime import datetime
 from rich.console import Console
 
-def expense(how_much, category):
+def expense(how_much, category, date=None):
     current_date = datetime.now()
 
     processed_date = datetime(current_date.year, current_date.month, current_date.day)
 
-    formated_date_str = processed_date.strftime("%m.%Y")
+    formated_date_str = date or processed_date.strftime("%m.%Y")
 
     category_list = dbapi.read("expenses", "category")
     date = dbapi.expense_check_date(category)
