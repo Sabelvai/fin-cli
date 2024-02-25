@@ -23,4 +23,4 @@ def expense(how_much, category, date=None):
             dbapi.expense(how_much, category, formated_date_str)
             console.print(f"Created category [bold white]{category}[/bold white] and expensed [bold white]{how_much}[/bold white] for [bold white]{formated_date_str}[/bold white]")
         else:
-            console.print(f"Category [bold white]{category}[/bold white] does not exist. Please create the category first.")
+            dbapi.expense(how_much, category, formated_date_str)
